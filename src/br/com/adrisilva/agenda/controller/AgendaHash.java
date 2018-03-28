@@ -4,7 +4,7 @@ import br.com.adrisilva.agenda.model.Tarefa;
 import java.util.HashMap;
 import java.util.Set;
 
-public class AgendaHash {
+public class AgendaHash implements Agenda {
 
     private final HashMap<String, Tarefa> lista_tarefas;
 
@@ -12,7 +12,8 @@ public class AgendaHash {
         this.lista_tarefas = new HashMap<>();
     }
 
-    public void cadastrarTarefa(int hr_inicio, double valor_hora, double duracao, String desc, String data, String local) {
+    @Override
+    public void cadastrarTarefa(String desc, String data, String local, int hr_inicio, double valor_hora, double duracao) {
 
         Tarefa t = new Tarefa(hr_inicio, valor_hora, duracao, desc, data, local);
 
@@ -21,6 +22,7 @@ public class AgendaHash {
         System.out.println("-> Tarefa Cadastrada com sucesso.");
     }
 
+    @Override
     public void removerTarefa(String desc_tarefa) {
         int qtd_tarefas = this.lista_tarefas.size();
 
@@ -33,6 +35,7 @@ public class AgendaHash {
         }
     }
 
+    @Override
     public void buscarTarefa(String desc_tarefa) {
         try {
             Tarefa tarefa = this.lista_tarefas.get(desc_tarefa);
@@ -73,6 +76,7 @@ public class AgendaHash {
 
     }
 
+    @Override
     public void iniciarTarefa(String desc_tarefa) {
         try {
             this.lista_tarefas.get(desc_tarefa).iniciarTarrefa();
@@ -82,6 +86,7 @@ public class AgendaHash {
         }
     }
 
+    @Override
     public void encerrarTarefa(String desc_tarefa, double valor_cobrado) {
         try {
             this.lista_tarefas.get(desc_tarefa).encerrarTarefa(valor_cobrado);
@@ -91,6 +96,7 @@ public class AgendaHash {
         }
     }
 
+    @Override
     public void listarTarefas() {
         if (lista_tarefas.isEmpty()) {
             System.err.println("Nenhuma Tarefa agendada.");
@@ -138,6 +144,7 @@ public class AgendaHash {
         }
     }
 
+    @Override
     public void incrementarImportancia(String desc_tarefa) {
 
         try {
@@ -154,4 +161,5 @@ public class AgendaHash {
         }
 
     }
+
 }

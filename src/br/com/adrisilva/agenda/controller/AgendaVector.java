@@ -1,9 +1,11 @@
 package br.com.adrisilva.agenda.controller;
 
 import br.com.adrisilva.agenda.model.Tarefa;
+
 import java.util.Vector;
 
-public class AgendaVector {
+
+public class AgendaVector implements Agenda{
 
     private Vector<Tarefa> lista_tarefas;
 
@@ -11,6 +13,7 @@ public class AgendaVector {
         this.lista_tarefas = new Vector<>();
     }
 
+    @Override
     public void cadastrarTarefa(String desc, String data, String local, int hr_incicio, double valor_hora, double duracao) {
 
         Tarefa t = new Tarefa(hr_incicio, valor_hora, duracao, desc, data, local);
@@ -20,6 +23,7 @@ public class AgendaVector {
         System.out.println("-> Tarefa Cadastrada com sucesso.");
     }
 
+    @Override
     public void removerTarefa(String desc_tarefa) {
 
         int qtd_tarefas = 0;
@@ -41,6 +45,7 @@ public class AgendaVector {
 
     }
 
+    @Override
     public void buscarTarefa(String desc_tarefa) {
         int qtd_tarefas = 0;
 
@@ -91,6 +96,7 @@ public class AgendaVector {
 
     }
 
+    @Override
     public void iniciarTarefa(String desc_tarefa) {
         int qtd_tarefas = 0;
 
@@ -110,6 +116,7 @@ public class AgendaVector {
         }
     }
 
+    @Override
     public void encerrarTarefa(String desc_tarefa, double valor_cobrado) {
         int qtd_tarefas = 0;
 
@@ -129,6 +136,7 @@ public class AgendaVector {
         }
     }
 
+    @Override
     public void listarTarefas() {
         int qtd_tarefas = 0;
 
@@ -174,6 +182,7 @@ public class AgendaVector {
         }
     }
 
+    @Override
     public void incrementarImportancia(String desc_tarefa) {
         int qtd_tarefas = 0;
 
